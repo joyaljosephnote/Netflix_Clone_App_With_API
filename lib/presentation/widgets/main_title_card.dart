@@ -12,28 +12,31 @@ class MainTitleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        MainTitle(title: title),
-        kHeight10,
-        LimitedBox(
-            maxHeight: 250,
-            child: ValueListenableBuilder(
-                valueListenable: listNotifier,
-                builder: (context, value, _) {
-                  return ListView.builder(
-                    itemCount: value.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      var data = value[index];
-                      return MainCardHome(
-                        movie: data,
-                      );
-                    },
-                  );
-                }))
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MainTitle(title: title),
+          kHeight10,
+          LimitedBox(
+              maxHeight: 250,
+              child: ValueListenableBuilder(
+                  valueListenable: listNotifier,
+                  builder: (context, value, _) {
+                    return ListView.builder(
+                      itemCount: value.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var data = value[index];
+                        return MainCardHome(
+                          movie: data,
+                        );
+                      },
+                    );
+                  }))
+        ],
+      ),
     );
   }
 }
